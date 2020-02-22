@@ -11,6 +11,8 @@ class TreeNode {
     }
 }
 
+// GREAT Tutorial: https://youtu.be/F85boSPtfKg
+
 public class Main_101 {
     public static void main(String[] args) {
         Main_101 main_101 = new Main_101();
@@ -55,6 +57,8 @@ public class Main_101 {
             if (t1 == null && t2 == null) continue;
             if (t1 == null || t2 == null) return false;
             if (t1.val != t2.val) return false;
+
+            // Note: 插入queue的顺序是破题点！
             q.add(t1.left);
             q.add(t2.right);
             q.add(t1.right);

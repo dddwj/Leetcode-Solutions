@@ -25,17 +25,44 @@ public class Main_102 {
         t3.left = t6;
         t3.right = t7;
 
-        List<List<Integer>> rst = main_102.levelOrder(t1);
+        // Store result to 'rst'
+        List<List<Integer>> rst = main_102.levelOrder_solution1(t1);
+
+        // Print 'rst' out
         for (List<Integer> line : rst) {
             System.out.println(Arrays.toString(line.toArray()));
         }
+    }
+
+    // Solution1: DFS - Recursive
+    // Time: O(N)  Space: O(N)
+    public List<List<Integer>> levelOrder_solution1(TreeNode root) {
+        List<List<Integer>> levels = new ArrayList<>();
+        if (root == null)   return levels;
+        levelOrder(root, 0, levels);
+        return levels;
+    }
+
+    public void levelOrder(TreeNode node, int level, List<List<Integer>> levels) {
+        // start the current level
+        if (levels.size() == level)
+            levels.add(new ArrayList<Integer>());
+
+        // fulfil the current level
+        levels.get(level).add(node.val);
+
+        // process child nodes for the next level   (Pre-order Traverse here. In-order or Post-order also can!)
+        if (node.left != null)
+            levelOrder(node.left, level + 1, levels);
+        if (node.right != null)
+            levelOrder(node.right, level + 1, levels);
     }
 
 
 
     // Solution2: BFS - Iteration
     // Time: O(N)  Space: O(N)
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder_solution2(TreeNode root) {
         if (root == null)
             return new LinkedList<List<Integer>>();
 
