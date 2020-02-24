@@ -6,6 +6,8 @@ package leetcode.java.LC108;
  */
 
 
+import java.util.Random;
+
 class TreeNode {
     int val;
     TreeNode left;
@@ -17,18 +19,39 @@ class TreeNode {
 
 public class Main_108 {
 
-    int nums[] = {-10,-3,0,5,9};
-
     public static void main(String[] args) {
         Main_108 main_108 = new Main_108();
-
+        main_108.sortedArrayToBST(new int[] {-10,-3,0,5,9});
     }
+
+    // Solution: In-order Traverse:
+    //       Opt1: always choose left middle node as a root
+    //       Opt2: always choose right middle node as a root
+    //       Opt3: choose random middle node as a root
+    // Time: O(N)
+    // Space: O(logN), for recursive function call
+    public TreeNode sortedArrayToBST(int[] nums) {
+        this.nums = nums;
+        return helper(0, this.nums.length - 1);
+    }
+
+    int[] nums;
+    Random rand = new Random();
 
     public TreeNode helper(int left, int right) {
         if (left > right) return null;
 
-        // always choose left middle node as a root
+        // Opt1: always choose left middle node as a root
         int p = (left + right) / 2;
+/*
+        // Opt2: always choose right middle node as a root
+        int p = (left + right) / 2;
+        if ((left + right) % 2 == 1) ++p;
+
+        // Opt3: choose random middle node as a root
+        int p = (left + right) / 2;
+        if ((left + right) % 2 == 1) p += rand.nextInt(2);
+*/
 
         // inorder traversal: left -> node -> right
         TreeNode root = new TreeNode(nums[p]);
@@ -37,9 +60,6 @@ public class Main_108 {
         return root;
     }
 
-    public TreeNode sortedArrayToBST(int[] nums) {
-        this.nums = nums;
-        return helper(0, nums.length - 1);
-    }
+
 }
 
