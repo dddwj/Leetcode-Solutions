@@ -48,7 +48,7 @@ public class Main_70 {
 
 
     // My Solution1: (Opt1: Classical Dynamic Programming (DP) )
-    // Solution3 on LeetCode.com,  aka: Dynamic Programmin
+    // Solution3 on LeetCode.com,  aka: Dynamic Programming
     // Time: O(1)  Space: O(N)
     public int climbStairs_mysolution11(int n) {
         if (n == 1) return 1;       // n is a positive integer
