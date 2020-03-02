@@ -75,7 +75,7 @@ public class Main_153 {
             int mid = (hi - lo) / 2 + lo;
             if (nums[mid] < nums[hi]) {
                 hi = mid;
-            } else {
+            } else if (nums[mid] > nums[hi]){
                 lo = mid + 1;
             }
         }

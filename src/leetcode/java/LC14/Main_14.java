@@ -84,7 +84,6 @@ public class Main_14 {
             if (left.charAt(i) != right.charAt(i))
                 return left.substring(0, i);
         }
-        new Thread().start();
         return left.substring(0, min);
     }
 
