@@ -81,7 +81,7 @@ public class Main_235 {
     }
 
 
-    // My Solution: Naive    --- Refer to Leetcode 236.
+    // My Solution (Solution2 of LC236 On Leetcode.com) : Naive  (Iterative using parent pointers)    --- Refer to Leetcode 236.
     // Time: O(N)
     // Space: O(N)
     public TreeNode lowestCommonAncestor_mysolution(TreeNode root, TreeNode p, TreeNode q) {
