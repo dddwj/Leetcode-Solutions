@@ -6,6 +6,7 @@ public class Main_204 {
 
     // ref: https://leetcode-cn.com/problems/count-primes/solution/ru-he-gao-xiao-pan-ding-shai-xuan-su-shu-by-labula/
     // ref2: https://www.bilibili.com/video/av46300180/
+    // Reference: LC263, LC264
 
     public static void main(String[] args) {
         Main_204 main_204 = new Main_204();
