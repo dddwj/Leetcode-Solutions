@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Main_695 {
+
+    // Reference: LC200
+
     public static void main(String[] args) {
         Main_695 main_695 = new Main_695();
 //        int[][] grid = {
