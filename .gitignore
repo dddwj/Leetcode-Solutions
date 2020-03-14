@@ -2,3 +2,5 @@ workspace.xml
 tasks.xml
 
 out/
+
+src/leetcode/LC_frequency/
