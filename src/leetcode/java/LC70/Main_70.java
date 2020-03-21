@@ -3,6 +3,9 @@ package leetcode.java.LC70;
 import java.util.Arrays;
 
 public class Main_70 {
+
+    // Reference: 剑指Offer P77
+
     public static void main(String[] args) {
         Main_70 main_70 = new Main_70();
         System.out.println(main_70.climbStairs_solution1(4));

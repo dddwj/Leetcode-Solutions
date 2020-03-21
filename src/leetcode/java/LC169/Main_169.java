@@ -6,6 +6,7 @@ public class Main_169 {
 
     // Reference: Leetcode 229  求众数
     // Reference: https://leetcode-cn.com/problems/majority-element/solution/qiu-zhong-shu-by-leetcode-2/
+    // Reference: 剑指offer P205
 
     public static void main(String[] args) {
         Main_169 main_169 = new Main_169();
@@ -38,6 +39,7 @@ public class Main_169 {
     // Solution3: Sort + Math
     // Time: O(NlogN)   Space: O(1)
     // Ref: https://leetcode-cn.com/problems/majority-element/solution/qiu-zhong-shu-by-leetcode-2/
+    // Note: 类似于 剑指offer P206 解法一: 手写了QuickSort的Partition方法
     public int majorityElement_solution3(int[] nums) {
         Arrays.sort(nums);
         return nums[nums.length/2];
