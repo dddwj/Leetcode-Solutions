@@ -11,6 +11,9 @@ class ListNode {
 
 
 public class Main_2 {
+
+    // Ref: LC415, LC43
+
     public static void main(String[] args) {
         Main_2 main_2 = new Main_2();
         ListNode n1 = new ListNode(1);
