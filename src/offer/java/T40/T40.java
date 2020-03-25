@@ -40,7 +40,7 @@ public class T40 {
         return Arrays.copyOf(arr, k);
     }
 
-    private int partition(int[] arr, int n, int start, int end) {       // TODO: 还不太理解partition函数
+    private int partition(int[] arr, int n, int start, int end) {       // TODO: 还不太理解partition函数, refer to LC215
         Random random = new Random(20);
         int index = random.nextInt(end - start + 1) + start;
         swap(arr, index, end);
