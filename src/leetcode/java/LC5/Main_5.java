@@ -2,6 +2,14 @@ package leetcode.java.LC5;
 
 public class Main_5 {
 
+    public static void main(String[] args) {
+        Main_5 main_5 = new Main_5();
+        System.out.println(main_5.longestPalindrome_solution3("babad"));
+    }
+
+
+    // Solution1: Longest Common Substring
+    // Not workable!!
 
 
     // Solution2: Brute Force  (TLE)
@@ -39,6 +47,34 @@ public class Main_5 {
             i++; j--;
         }
         return true;
+    }
+
+
+    // Solution3: Dynamic Programming
+    // Time: O(N*N)
+    // Space: O(N*N)
+    // Ref: https://leetcode.com/problems/longest-palindromic-substring/discuss/2921/Share-my-Java-solution-using-dynamic-programming
+    //      https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
+    public String longestPalindrome_solution3(String s) {
+        if (s == null || s.length() < 2) {
+            return s;
+        }
+
+        int n = s.length();
+        String res = null;
+
+        boolean[][] dp = new boolean[n][n];
+
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                dp[i][j] = (s.charAt(i) == s.charAt(j)) && (j - i <= 2 || dp[i + 1][j - 1]);    // when j - i <= 2,  it is always a palindrome
+
+                if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
+                    res = s.substring(i, j + 1);
+                }
+            }
+        }
+        return res;
     }
 
 
