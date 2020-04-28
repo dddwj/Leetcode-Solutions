@@ -81,7 +81,7 @@ public class Main_221 {
     }
 
 
-    // Solution3: Dynamic Programming  (Optimization: 2D DP array --> 3D DP array)
+    // Solution3: Dynamic Programming  (Optimization: 2D DP array --> 1D DP array)
     // Time: O(MN)
     // Space: O(N)
     // Ref: https://leetcode.com/problems/maximal-square/solution/
