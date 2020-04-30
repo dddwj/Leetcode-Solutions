@@ -29,13 +29,18 @@ public class CheckValidSequenceSolution {
         System.out.println(solution.isValidSequence(n1, new int[]{1, 0, 1, 0, 10, 11}));
     }
 
+
+
+    // Solution: DFS
+    // Time: O(logN)
+    // Space: O(logN)
     public boolean isValidSequence(TreeNode root, int[] arr) {
         if (root == null || arr == null || arr.length == 0)
             return false;
         return isValidNode(root, arr, 0);
     }
 
-    private boolean isValidNode(TreeNode root, int[] arr, int depth) {System.out.println(depth);
+    private boolean isValidNode(TreeNode root, int[] arr, int depth) {
         if (depth >= arr.length || root.val != arr[depth])
             return false;
         if (root.left == null && root.right == null) {
