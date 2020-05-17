@@ -3,6 +3,11 @@ package leetcode.java.LC53;
 import java.util.Arrays;
 
 public class Main_53 {
+
+    /*
+        See also: LC918
+     */
+
     public static void main(String[] args) {
         Main_53 main_53 = new Main_53();
         main_53.maxSubArray_solution2(new int [] {-2,1,-3,4,-1,2,1,-5,4});
