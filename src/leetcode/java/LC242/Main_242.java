@@ -3,6 +3,9 @@ package leetcode.java.LC242;
 import java.util.Arrays;
 import java.util.HashMap;
 
+
+// See also: LC438, LC567
+
 public class Main_242 {
     public static void main(String[] args) {
         Main_242 main_242 = new Main_242();

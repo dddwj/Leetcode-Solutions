@@ -2,17 +2,68 @@ package leetcode.java.LC567;
 
 import java.util.*;
 
+
+// See also: LC438, LC242
+
 public class Main_567 {
 
     // Reference: https://leetcode.com/problems/permutation-in-string/solution/
 
     public static void main(String[] args) {
         Main_567 main_567 = new Main_567();
-        System.out.println(main_567.checkInclusion_solution5("adc", "dcda"));         // 此用例说明：不能用HashSet
-        System.out.println(main_567.checkInclusion_solution5("hello", "ooolleoooleh"));    // 此用例说明：必须对字母计频率
-        System.out.println(main_567.checkInclusion_solution5("ab", "a"));    // 此用例说明：必须对字母计频率
+        System.out.println(main_567.checkInclusion_solution("adc", "dcda"));         // 此用例说明：不能用HashSet
+        System.out.println(main_567.checkInclusion_solution("hello", "ooolleoooleh"));    // 此用例说明：必须对字母计频率
+        System.out.println(main_567.checkInclusion_solution("ab", "a"));            // Corner Case
 
     }
+
+    // Solution 0: Sliding Window
+    // Time: O(N)   Space: O(1)
+    // Ref: https://leetcode-cn.com/problems/permutation-in-string/solution/wo-xie-liao-yi-shou-shi-ba-suo-you-hua-dong-chuang/
+    //      LC438
+    // Note: 记忆模版！
+    public boolean checkInclusion_solution(String s1, String s2) {
+        // Corner Case
+        if (s1.length() > s2.length()) return false;
+
+        int[] need = new int[256];
+        int[] window = new int[256];
+        Set<Character> count = new HashSet<>(26);
+        for (char c : s1.toCharArray()) {
+            need[c]++;
+            count.add(c);
+        }
+
+        int left = 0, right = 0, valid = 0;
+        while (right < s2.length()) {
+            // move right-ptr
+            char c = s2.charAt(right);
+            right++;
+            if (need[c] > 0) {
+                window[c]++;
+                if (window[c] == need[c])
+                    valid++;
+            }
+
+            // move left-ptr, when necessary
+            if (right - left >= s1.length()) {
+                // check valid window
+                if (valid == count.size())
+                    return true;
+                char d = s2.charAt(left);
+                left++;
+                if (need[d] > 0) {
+                    if (window[d] == need[d])
+                        valid--;
+                    window[d]--;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
 
     // Solution1: Brute Force
 
