@@ -2,6 +2,8 @@ package leetcode.java.LC221;
 
 public class Main_221 {
 
+    // See also: LC1277
+
     public static void main(String[] args) {
         Main_221 main_221 = new Main_221();
         System.out.println(main_221.maximalSquare_solution2(new char[][]{
@@ -63,6 +65,7 @@ public class Main_221 {
     // Time: O(MN)
     // Space: O(MN)
     // Ref: https://leetcode.com/problems/maximal-square/solution/
+    //      LC1277
     public int maximalSquare_solution2(char[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return 0;
