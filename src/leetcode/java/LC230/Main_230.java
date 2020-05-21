@@ -15,6 +15,7 @@ class TreeNode {
 public class Main_230 {
 
     // Answer to Follow Up:   https://leetcode.com/problems/kth-smallest-element-in-a-bst/discuss/63743/Java-divide-and-conquer-solution-considering-augmenting-tree-structure-for-the-follow-up
+    // Tutorial: https://youtu.be/QxFOR8sQuB4
 
 
     public static void main(String[] args) {
@@ -63,6 +64,7 @@ public class Main_230 {
     // Solution2:  In-order DFS - Recursion
     // Time: O(H + K)   Space: O(H + k), where H max = N, avg = lgN
     // Ref: https://leetcode.wang/leetcode-230-Kth-Smallest-Element-in-a-BST.html
+    //      Template Below
     public int kthSmallest_solution2(TreeNode root, int k) {
         if (root == null)
             return -1;
@@ -117,13 +119,14 @@ public class Main_230 {
 
     // Template: In-order traversal  -  Iteration
     // Ref: LC94: https://leetcode.wang/leetCode-94-Binary-Tree-Inorder-Traversal.html
+    // Tutorial: https://youtu.be/QxFOR8sQuB4
     // Time: O(N)   Space: O(lgN)
     // Note: 记忆模版！
     public List<Integer> inorderTraversal_iteration(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
+        while (!stack.isEmpty() || root != null) {
             while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
