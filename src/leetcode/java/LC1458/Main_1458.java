@@ -2,7 +2,7 @@ package leetcode.java.LC1458;
 
 public class Main_1458 {
 
-    // See also: LC1143
+    // See also: LC1143, LC1035, LC72
 
     public static void main(String[] args) {
         Main_1458 main_1458 = new Main_1458();
