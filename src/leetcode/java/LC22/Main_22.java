@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Great Tutorial: https://leetcode.wang/leetCode-22-Generate-Parentheses.html
+//                 https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/he-fa-kuo-hao-sheng-cheng
+// See also: LC46, LC78, LC77, LC39
 
 public class Main_22 {
     public static void main(String[] args) {
@@ -61,6 +63,7 @@ public class Main_22 {
     // Solution2: Backtrack
     // Ref: https://leetcode.com/problems/generate-parentheses/solution/
     //      https://leetcode.wang/leetCode-22-Generate-Parentheses.html
+    // See also: LC46, LC78, https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/he-fa-kuo-hao-sheng-cheng
     public List<String> generateParenthesis_solution2(int n) {
         List<String> ans = new ArrayList<>();
         // backtrack(ans, new StringBuilder(), 0, 0, n);
