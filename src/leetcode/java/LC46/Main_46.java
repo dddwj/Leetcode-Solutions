@@ -3,7 +3,7 @@ package leetcode.java.LC46;
 import java.util.*;
 
 // Great Tutorial: https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
-// See also: LC39, LC77, LC78, LC22
+// See also: LC39, *LC51*, LC37, LC77, LC78, LC22
 
 public class Main_46 {
 

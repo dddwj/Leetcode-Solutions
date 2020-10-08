@@ -5,7 +5,7 @@ import java.util.List;
 
 // Great Tutorial: https://leetcode.wang/leetCode-22-Generate-Parentheses.html
 //                 https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/he-fa-kuo-hao-sheng-cheng
-// See also: LC46, LC78, LC77, LC39
+// See also: *LC46*, *LC51*, LC37, LC78, LC77, LC39
 
 public class Main_22 {
     public static void main(String[] args) {

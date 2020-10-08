@@ -6,7 +6,7 @@ import java.util.List;
 
 // Great Tutorial: https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
 //                 https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
-// See also: LC39, LC46, LC77, LC22, LC39
+// See also: *LC46*, *LC51*, LC37, LC77, LC22, LC39
 
 public class Main_78 {
     public static void main(String[] args) {

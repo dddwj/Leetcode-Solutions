@@ -3,7 +3,7 @@ package leetcode.java.LC39;
 import java.util.ArrayList;
 import java.util.List;
 
-// See also: *LC46*, LC77, LC78, LC22  (Backtrack)
+// See also: *LC46*, *LC51*, LC37, LC77, LC78, LC22  (Backtrack)
 
 public class Main_39 {
 
