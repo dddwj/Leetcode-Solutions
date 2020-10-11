@@ -1,6 +1,6 @@
 package leetcode.java.LC875;
 
-// See also: LC852
+// See also: LC852, LC1011
 // Great Tutorial: https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/er-fen-cha-zhao-xiang-jie
 
 public class Main_875 {
