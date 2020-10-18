@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// See also: *LC46*, LC39, LC77, LC78, LC22
+// See also: *LC37*, *LC46*, LC39, LC77, LC78, LC22
 
 // Solution1: Classic Backtrack
 // Ref: https://leetcode-cn.com/problems/n-queens/solution/hui-su-suan-fa-xiang-jie-by-labuladong/216150

@@ -2,7 +2,7 @@ package leetcode.java.LC51;
 
 import java.util.*;
 
-// See also: *LC46*, LC39, LC77, LC78, LC22
+// See also: *LC37*, *LC46*, LC39, LC77, LC78, LC22
 
 // Solution2: Classic Backtrack (Optimized)
 // Ref: https://leetcode.wang/leetCode-51-N-Queens.html
