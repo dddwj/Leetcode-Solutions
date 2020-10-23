@@ -1,5 +1,7 @@
 package leetcode.java.LC21;
 
+// See also: (Series) LC23
+
 class ListNode {
     int val;
     ListNode next;

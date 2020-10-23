@@ -1,5 +1,9 @@
 package leetcode.java.LC198;
 
+import java.util.Arrays;
+
+// See also: LC70, (Series) LC213
+
 public class Main_198 {
     // ref: https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-by-leetcode/217208
     // Reference: LeetCode 70: Climbing Stairs
@@ -40,6 +44,31 @@ public class Main_198 {
 
 //        System.out.println(Arrays.toString(dp));
         return dp[size];
+    }
+
+
+    // Solution2: Dynamic Programming  (From top to bottom)
+    // Space: O(N)
+    // Time: O(N)
+    // Ref: https://mp.weixin.qq.com/s/z44hk0MW14_mAQd7988mfw
+    private int[] memo;
+    public int rob_solution2(int[] nums) {
+        memo = new int[nums.length];
+        Arrays.fill(memo, -1);
+        return dp(nums, 0);
+    }
+
+    private int dp(int[] nums, int i) {
+        if (i >= nums.length)
+            return 0;
+
+        if (memo[i] != -1)
+            return memo[i];
+
+        int res = Math.max(dp(nums, i + 1),
+                dp(nums, i + 2) + nums[i]);
+        memo[i] = res;
+        return res;
     }
 
 }
