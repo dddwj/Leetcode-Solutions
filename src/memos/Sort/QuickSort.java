@@ -1,4 +1,4 @@
-package memos;
+package memos.Sort;
 
 import java.util.Arrays;
 
