@@ -3,6 +3,8 @@ package leetcode.java.LC234;
 // See also: LC206, LC92
 // Met in Apple Interview @2020.10.26
 
+// Great Tutorial: https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/2.2-shou-ba-shou-shua-lian-biao-ti-mu-xun-lian-di-gui-si-wei/pan-duan-hui-wen-lian-biao
+
 import leetcode.java.Utils.ListNode;
 
 import java.util.ArrayList;
@@ -90,5 +92,28 @@ public class Main_234 {
         head.next.next = head;
         head.next = null;
         return p;
+    }
+
+
+    // Solution3: Recursion
+    // Time: O(N)
+    // Space: O(N)
+    // Ref: https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/2.2-shou-ba-shou-shua-lian-biao-ti-mu-xun-lian-di-gui-si-wei/pan-duan-hui-wen-lian-biao
+    ListNode left;
+    boolean isPalindrome_solution3(ListNode head) {
+        if (head == null || head.next == null)
+            return true;
+        left = head;
+        return traverse(head);
+    }
+
+    boolean traverse(ListNode right) {
+        if (right == null)
+            return true;
+        boolean res = traverse(right.next);
+        // 后序遍历代码
+        res = res && (right.val == left.val);
+        left = left.next;
+        return res;
     }
 }
