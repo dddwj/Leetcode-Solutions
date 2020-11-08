@@ -10,8 +10,9 @@ public class Main_215 {
 
     public static void main(String[] args) {
         Main_215 main_215 = new Main_215();
-        System.out.println(main_215.findKthLargest_solution2(new int[]{3, 2, 1, 5, 6, 4}, 2));
-        System.out.println(main_215.findKthLargest_solution2(new int[]{3,2,3,1,2,4,5,5,6}, 4));
+        System.out.println(main_215.findKthLargest_solution2_newer(new int[]{3, 2, 1, 5, 6, 4}, 2));
+        System.out.println(main_215.findKthLargest_solution2_newer(new int[]{3,2,3,1,2,4,5,5,6}, 4));
+        System.out.println(main_215.findKthLargest_solution2_newer(new int[]{1}, 1));
     }
 
 
@@ -32,6 +33,80 @@ public class Main_215 {
         return heap.peek();
     }
 
+
+
+
+    // Solution2 (Newer Version): (Similar to Solution2) QuickSort + Random
+    // Time: O(NlgN)    worst: O(N*N) (without optimization)
+    // Space: O(lgN)
+    public int findKthLargest_solution2_newer(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k > nums.length)
+            return 0;
+
+        int kSmallest = nums.length - k;
+        return find(nums, 0, nums.length - 1, kSmallest);
+    }
+
+    private int find(int[] nums, int left, int right, int kSmallest) {
+        if (left <= right) {
+            int index = partition(nums, left, right);
+            // OR:
+            // int index = partition_optimized(nums, left, right);
+            if (index < kSmallest) {
+                return find(nums, index + 1, right, kSmallest);
+            } else if (index > kSmallest) {
+                return find(nums, left, index - 1, kSmallest);
+            } else if (index == kSmallest) {
+                return nums[index];
+            }
+        }
+        return -1;
+    }
+
+    private int partition_optimized(int[] nums, int left, int right) {
+        // Optimization: Take a random number as pivot
+        Random random = new Random(667);
+        int rand = left + (left < right ? random.nextInt(right - left) : 0);
+        swap(nums, left, rand);
+
+        int pivot = left;
+        int i = left, j = right;
+
+        while (i < j) {
+            while (i < j && nums[j] >= nums[pivot]) {
+                j--;
+            }
+            while (i < j && nums[i] <= nums[pivot]) {
+                i++;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, pivot, i);
+        return i;
+    }
+
+    private int partition(int[] nums, int left, int right) {
+        int pivot = left;
+        int i = left, j = right;
+
+        while (i < j) {
+            while (i < j && nums[j] >= nums[pivot]) {
+                j--;
+            }
+            while (i < j && nums[i] <= nums[pivot]) {
+                i++;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, pivot, i);
+        return i;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 
 
 
