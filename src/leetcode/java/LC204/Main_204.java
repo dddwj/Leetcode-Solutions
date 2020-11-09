@@ -42,6 +42,8 @@ public class Main_204 {
 
 
     // Solution2:  Sieve of Eratosthenes Algorithm  -- (Not optimized)
+    // Time: O(N*N)
+    // Space: O(N)
     // ref: https://leetcode-cn.com/problems/count-primes/solution/ru-he-gao-xiao-pan-ding-shai-xuan-su-shu-by-labula/
     public int countPrimes_solution2(int n) {
         boolean[] isPrim = new boolean[n];
@@ -71,7 +73,7 @@ public class Main_204 {
 
 
     // Solution3:  Sieve of Eratosthenes Algorithm  -- (optimized)
-    // Time:  O(N * loglogN)  Space: O(1)
+    // Time:  O(N * logN)  Space: O(N)
     // ref: https://leetcode-cn.com/problems/count-primes/solution/ru-he-gao-xiao-pan-ding-shai-xuan-su-shu-by-labula/
     public int countPrimes_solution3(int n) {
         boolean[] isPrim = new boolean[n];

@@ -1,5 +1,7 @@
 package leetcode.java.LC15;
 
+// See also: LC16, LC1
+
 import java.util.*;
 
 public class Main_15 {
@@ -66,8 +68,9 @@ public class Main_15 {
     // Solution: Sort + Find (Two Pointers)
     // Time: O(N^2 + NlogN)  = O(N^2)
     // Space: O(1), No extra space, but the 'sort' operation will effect the original input array.
+    //        O(lgN) for quicksort
     public List<List<Integer>> threeSum(int[] nums) {
-        // Sort,   O(NlogN):   Sort is applied to avoid duplicates.
+        // Sort,   O(NlogN):   Sort is applied to avoid duplicates.  Space Complexity: O(lgN) for quicksort
         Arrays.sort(nums);
 
         // Find,  O(N^2)
