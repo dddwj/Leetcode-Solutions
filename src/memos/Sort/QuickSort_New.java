@@ -3,14 +3,15 @@ package memos.Sort;
 import java.util.Arrays;
 
 // QuickSort
-// Time: O(NlogN),  worst: O(N*N)
-// Space: O(N)
+// Time: O(NlgN),  worst: O(N*N)
+// Space: O(lgN)
 public class QuickSort_New {
 
     public static void main(String[] args) {
         QuickSort_New quicksort = new QuickSort_New();
 //        int[] res = quicksort.sort(new int[] {2,5,3,1,9});
-        int[] res = quicksort.sort(new int[]{9,8,7,6,5});
+//        int[] res = quicksort.sort(new int[]{9,8,7,6,5});
+        int[] res = quicksort.sort(new int[]{3,2,3,1,2,4,5,5,6});
         System.out.println(Arrays.toString(res));
     }
 
@@ -46,7 +47,7 @@ public class QuickSort_New {
     public int partition(int[] nums, int left, int right) {
         int pivot = left;
         int i = left, j = right;
-        while (i < j) {
+        while (i < j) {         // 注意顺序，必须先移动j，再移动i。  测试用例： [3,2,3,1,2,4,5,5,6]
             while (nums[j] >= nums[pivot] && i < j) {
                 j--;
             }
