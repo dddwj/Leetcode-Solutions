@@ -1,5 +1,7 @@
 package leetcode.java.LC33;
 
+// See also: (Series) LC81
+
 public class Main_33 {
     public static void main(String[] args) {
         Main_33 main_33 = new Main_33();
@@ -108,7 +110,7 @@ public class Main_33 {
     }
 
 
-    // Solution (Newer Version):  Equivalent to `LCVersion`
+    // Solution (Newer Version):  Binary Search   (Equivalent to `LCVersion`)
     // Ref: https://leetcode-cn.com/problems/search-in-rotated-sorted-array/solution/sou-suo-xuan-zhuan-pai-xu-shu-zu-by-leetcode-solut/
     public int search_LeetcodeSolution_MyVersion(int[] nums, int target) {
         if (nums == null || nums.length == 0)
@@ -148,7 +150,7 @@ public class Main_33 {
         return -1;
     }
 
-    // Solution (Newer Version):  Equivalent to `MyVersion`
+    // Solution (Newer Version):  Binary Search   (Equivalent to `MyVersion`)
     // Ref: https://leetcode-cn.com/problems/search-in-rotated-sorted-array/solution/sou-suo-xuan-zhuan-pai-xu-shu-zu-by-leetcode-solut/
     public int search_LeetcodeSolution_LCVersion(int[] nums, int target) {
         int n = nums.length;
