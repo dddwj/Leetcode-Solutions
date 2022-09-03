@@ -5,3 +5,5 @@ tasks.xml
 out/
 
 src/leetcode/LC_frequency/
+
+.DS_Store
