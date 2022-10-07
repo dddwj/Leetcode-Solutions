@@ -7,7 +7,7 @@ class Solution_backtracking:
 
         def backtrack(curr_node, path):
             if curr_node == target:
-                results.append(list(path))
+                results.append(list(path))      # O(N) Time
                 return
             for next_node in graph[curr_node]:
                 path.append(next_node)

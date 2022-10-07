@@ -58,3 +58,40 @@ class Solution_concise:
         return curString
 
 
+
+# Reference: https://leetcode.com/problems/decode-string/solution/
+class Solution_recursion:
+    def decodeString(self, s: str) -> str:
+        self.index = 0
+        res = self.helper(s)
+        return res
+
+    def helper(self, s: str):
+        res = ''
+        while self.index < len(s):
+            char = s[self.index]
+            if char == ']':
+                break
+            if char.isalpha():
+                res += str(char)
+                self.index += 1
+            if char.isdigit():
+                # Get number
+                k = 0
+                while self.index < len(s) and s[self.index].isdigit():
+                    k = k * 10 + int(s[self.index])
+                    self.index += 1
+
+                # ignore '['
+                self.index += 1
+
+                # Recursion
+                next_str = self.helper(s)
+
+                # ignore ']'
+                self.index += 1
+
+                # Generate string
+                res += (next_str * k)
+
+        return res
