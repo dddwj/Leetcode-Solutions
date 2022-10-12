@@ -58,3 +58,28 @@ s.longestCommonPrefix(["leetcode", "lee", "l"])
 #     return False
 #
 # print(isCommonPrefix(None, ["leetcode", "lee", "lee3"], 2))
+
+# My Solution: Trie 
+class Solution_Trie:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        trie = {}
+
+        for string in strs:
+            node = trie
+            for c in string:
+                if c not in node:
+                    node[c] = {}
+                node = node[c]
+            node['#'] = string
+
+
+        res = []
+        node = trie
+        while node and '#' not in node:
+            keys = list(node.keys())
+            if len(keys) != 1:
+                break
+            res.append(keys[0])
+            node = node[keys[0]]
+
+        return ''.join(res)
