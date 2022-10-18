@@ -1,0 +1,172 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        ConsoleProcessor processor = new ConsoleProcessor();
+        processor.processAllLines();
+    }
+}
+
+class ConsoleProcessor {
+
+    public OrgChart orgChart = new OrgChart();
+
+    public void processAllLines() {
+        Scanner in = new Scanner(System.in);
+        String line = in.nextLine();
+
+        Integer numLines = 0;
+
+        try {
+           numLines = Integer.valueOf(line.trim());
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+
+        for (int i = 0; i < numLines; i++) {
+            processLine(in.nextLine());
+        }
+
+        in.close();
+    }
+
+    protected void processLine(String line) {
+        String[] parsedCommand = line.split(",");
+
+        // ignore empty lines
+        if (parsedCommand.length == 0) {
+            return;
+        }
+
+        switch (parsedCommand[0]) {
+            case "add":
+                orgChart.add(parsedCommand[1], parsedCommand[2], parsedCommand[3]);
+                break;
+            case "print":
+                orgChart.print();
+                break;
+            case "remove":
+                orgChart.remove(parsedCommand[1]);
+                break;
+            case "move":
+                orgChart.move(parsedCommand[1], parsedCommand[2]);
+                break;
+            case "count":
+                System.out.println(orgChart.count(parsedCommand[1]));
+                break;
+        }
+    }
+}
+
+class Employee {
+    public String employeeId;
+    public String employeeName;
+    public String managerId;
+    
+    public Employee(String employeeId, String employeeName, String managerId) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.managerId = managerId;    
+    }
+}
+
+class OrgChart {
+    private Map<String, List<Employee>> report_map;
+    private Map<String, Employee> employees;
+    
+    public OrgChart() {
+        this.report_map = new HashMap<>();
+        this.employees = new HashMap<>();
+        this.report_map.put("-1", new LinkedList<>());
+    }
+    
+    public void add(String id, String name, String managerId)
+    {
+        if (this.employees.containsKey(id)) {
+            return;
+        }
+        if (!this.employees.containsKey(managerId)) {
+            managerId = "-1";
+        }
+        
+        Employee employee = new Employee(id, name, managerId);
+        this.employees.put(id, employee);
+        List<Employee> reports = this.report_map.get(managerId);
+        reports.add(employee);
+        this.report_map.put(id, new LinkedList<>());
+    }
+
+    public void print()
+    {
+        List<Employee> reports = this.report_map.get("-1");
+        for (Employee report : reports) {
+            this.printEmployee(report, 0);
+        }
+    }
+    
+    private void printEmployee(Employee employee, int level) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < level; i++) {
+            sb.append("  ");
+        }
+        sb.append(employee.employeeName);
+        sb.append(" [");
+        sb.append(employee.employeeId);
+        sb.append("]");
+        System.out.println(sb.toString());
+
+        List<Employee> reports = this.report_map.get(employee.employeeId);
+        for (Employee report : reports) {
+            this.printEmployee(report, level + 1);
+        }
+    }
+
+    public void remove(String employeeId)
+    {
+        Employee employee = this.employees.get(employeeId);
+        List<Employee> manager_reports = this.report_map.get(employee.managerId);
+        
+        // Remove from manager's list
+        manager_reports.remove(employee);
+        
+        // Set reports' manager to employee's manager
+        List<Employee> reports = this.report_map.get(employeeId);
+        for (Employee report: reports) {
+            report.managerId = employee.managerId;
+            manager_reports.add(report);
+        }
+        
+        this.employees.remove(employeeId);
+        this.report_map.remove(employeeId);
+    }
+
+    public void move(String employeeId, String newManagerId)
+    {
+        if (!this.employees.containsKey(newManagerId) || !this.employees.containsKey(employeeId)) {
+            return;
+        }
+        
+        Employee employee = this.employees.get(employeeId);
+        List<Employee> manager_reports = this.report_map.get(employee.managerId);
+        
+        // Remove from manager's reports list
+        manager_reports.remove(employee);
+        
+        // Update manager
+        employee.managerId = newManagerId;
+        this.report_map.get(newManagerId).add(employee);
+    }
+
+    public int count(String employeeId)
+    {
+        int res = 0;
+        for (Employee report : this.report_map.get(employeeId)) {
+            res += (1 + this.count(report.employeeId));
+        }
+        return res;
+    }
+}

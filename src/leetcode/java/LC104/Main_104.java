@@ -1,7 +1,5 @@
 package leetcode.java.LC104;
 
-import javafx.util.Pair;
-
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Arrays;
 import java.util.LinkedList;
