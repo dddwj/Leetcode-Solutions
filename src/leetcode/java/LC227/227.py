@@ -1,3 +1,44 @@
+# See also: LC772
+
+# Time: O(N)
+# Space: O(N)
+# Reference: https://leetcode.com/problems/basic-calculator-ii/solution/
+class Solution_stack:
+    def calculate(self, s: str) -> int:
+        if not s:
+            return 0
+
+        s = s.strip()
+        i = 0
+        n = len(s)
+        stack = []
+        number = 0
+        op = '+'
+
+        while i < n:
+            c = s[i]
+            if c == ' ':
+                i += 1
+                continue
+            if c.isdigit():
+                number = number * 10 + int(c)
+                i += 1
+            if (not c.isdigit()) or i == n: # c is op OR c is the last character in s
+                if op == '+':
+                    stack.append(number)
+                elif op == '-':
+                    stack.append(-number)
+                elif op == '*':
+                    stack.append(stack.pop() * number)
+                elif op == '/':
+                    stack.append(int(stack.pop() / number))
+                op = c
+                number = 0
+                i += 1
+
+
+        return sum(stack)
+
 class Solution_complex:
     def calculate(self, s: str) -> int:
         if not s or len(s) == 0:
